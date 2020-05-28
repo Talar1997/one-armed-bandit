@@ -6,20 +6,31 @@
         <meta name="keywords" content="ruletka, losowanie, hazard">
         <meta name="author" content="Adam Talarczyk">
         <link rel="stylesheet" href="styles/layout.css">
-        <link rel="stylesheet" href="styles/roulette.css">
-        <link rel="stylesheet" href="styles/modal.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-      <div class="container">
-          <canvas id="canvasContainer" width="600" height="900" style="background-color: black">
-              Canvas is not supported by your browser
-          </canvas>
-          <div style="display: none">
-              <img id="icons" src="images/icon-array.png">
-          </div>
-      </div>
+    <div class="container">
+        <canvas id="canvasContainer" width="600" height="400" style="background-color: rgb(200,200,200)">
+            Canvas is not supported by your browser
+        </canvas>
+        <div style="display: none">
+            <img id="icons" src="images/icons.png">
+        </div>
+        <button id="lotteryButton" onClick="game.startSpinning()">Losuj</button>
+    </div>
 
-      <script src="scripts/staticImageCreator.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/sounds.js"></script>
+    <script src="scripts/canvas.js"></script>
+    <script src="scripts/SlotItem.js"></script>
+    <script src="scripts/SlotItems.js"></script>
+    <script src="scripts/SlotInitializer.js"></script>
+    <script src="scripts/PrizeGenerator.js"></script>
+    <script>
+        let game = new Game()
+        game.initialize()
+    </script>
+
+
     </body>
 </html>
