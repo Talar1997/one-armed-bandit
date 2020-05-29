@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="styles/layout.css">
     </head>
     <body>
+    <div style="display: none">
+        <img id="icons" src="images/icons.png">
+    </div>
     <div class="container">
         <div id="header">
             <span id="logo">GOLD CASINO</span>
@@ -36,23 +39,15 @@
         </div>
 
     </div>
-    <div style="display: none">
-        <img id="icons" src="images/icons.png">
-    </div>
 
-    <script src="scripts/Game.js"></script>
-    <script src="scripts/Sounds.js"></script>
-    <script src="scripts/canvas.js"></script>
-    <script src="scripts/SlotItem.js"></script>
-    <script src="scripts/SlotItems.js"></script>
-    <script src="scripts/SlotInitializer.js"></script>
-    <script src="scripts/PrizeGenerator.js"></script>
-    <script src="scripts/Credits.js"></script>
-    <script>
-        let game = new Game();
-        game.initialize();
-    </script>
-
-
+    <script defer src="scripts/Game.js"></script>
+    <script defer src="scripts/Sounds.js"></script>
+    <script defer src="scripts/canvas.js"></script>
+    <script defer src="scripts/SlotItem.js"></script>
+    <script defer src="scripts/SlotItems.js"></script>
+    <script defer src="scripts/SlotInitializer.js"></script>
+    <script defer src="scripts/PrizeGenerator.js"></script>
+    <script defer src="scripts/Credits.js"></script>
+    <script defer src="scripts/init.js"></script>
     </body>
 </html>

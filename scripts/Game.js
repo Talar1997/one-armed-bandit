@@ -22,6 +22,10 @@ function Game() {
         this.createLabels();
     };
 
+    this.refreshIcons = () => {
+        this.createStartScreen();
+    }
+
     this.initializeBackgroundMusic = () => {
         let backgroundMusic = new Sounds()
         backgroundMusic.sound.loop = true;
