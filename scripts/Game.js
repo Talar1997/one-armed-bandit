@@ -4,7 +4,7 @@ function Game() {
     let newPos = 0;
     let positionOffset = 40;
     let slotInitializer = new SlotInitializer();
-    let credits = new Credits();
+    let credits = new Credits(1000);
     let soundManager = new Sounds();
 
     const spinningSpeed = {
@@ -27,7 +27,7 @@ function Game() {
         backgroundMusic.sound.loop = true;
         backgroundMusic.sound.volume = 0.2;
         backgroundMusic.play('sounds/loop.mp3');
-    }
+    };
 
     this.setDefaultVariables = () => {
         newPos = 0;
@@ -45,6 +45,16 @@ function Game() {
         creditBoardCtx.fillText(credits.bet, 280, 50);
         creditBoardCtx.textAlign = "end";
         creditBoardCtx.fillText(credits.lastWin, 590, 50);
+    };
+
+    this.increaseBet = () => {
+        credits.changeBet(credits.bet + 50);
+        this.updateCredits();
+    }
+
+    this.decreaseBet = () => {
+        credits.changeBet(credits.bet - 50);
+        this.updateCredits();
     }
 
     this.createLabels = () => {
@@ -57,7 +67,7 @@ function Game() {
         controlBoardCtx.fillText("BET", 280, 15);
         controlBoardCtx.textAlign = "end";
         controlBoardCtx.fillText("LAST WIN", 590, 15);
-    }
+    };
 
     this.setSpinningSpeed = (option) => {
         switch (option) {
@@ -107,7 +117,7 @@ function Game() {
         ctx.lineTo(600,220);
         ctx.lineTo(580,200);
         ctx.fill();
-    }
+    };
 
     this.startAnimation = () => {
         ctx.clearRect(0, 0, 600, 600);
@@ -145,8 +155,8 @@ function Game() {
 
     this.winHandler = (prize) => {
         if (prize.value > 0) soundManager.play("sounds/coins.mp3");
-        if (prize.value > 10000) soundManager.play("sounds/jackpot.mp3");
-        credits.takePrize(prize.value);
+        if ((prize.value * (credits.bet / 50)) > 10000) soundManager.play("sounds/jackpot.mp3");
+        credits.takePrize(prize.value * (credits.bet / 50));
         this.updateCredits();
     };
 
@@ -167,5 +177,7 @@ function Game() {
 
     this.changeButtonState = (state) => {
         document.querySelector("#lotteryButton").disabled = state;
-    }
+        document.querySelector("#betPlus").disabled = state;
+        document.querySelector("#betMinus").disabled = state;
+    };
 }

@@ -23,16 +23,16 @@
             <canvas id="controlBoard" width="600" height="20" style="background-color: black">
                 Canvas is not supported by your browser
             </canvas>
-            <div class="buttonPanel">
-                <button class="button" id="betMinus" onClick="game.startSpinning()">BET-</button>
-                <button class="button" id="betPlus" onClick="game.startSpinning()">BET+</button>
-                <button class="button" id="lotteryButton" onClick="game.startSpinning()">SPIN</button>
-            </div>
+
         </div>
 
 
         <div id="footer">
-
+            <div class="buttonPanel">
+                <button class="button" id="betMinus" onClick="game.decreaseBet()">BET-</button>
+                <button class="button" id="betPlus" onClick="game.increaseBet()">BET+</button>
+                <button class="button" id="lotteryButton" onClick="game.startSpinning()">SPIN</button>
+            </div>
         </div>
 
     </div>

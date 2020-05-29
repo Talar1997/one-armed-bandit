@@ -95,7 +95,7 @@ html{
 
 .buttonPanel{
     position: relative;
-    top: 50px;
+    top: -80px;
     text-align: center;
 }
 .button {
@@ -108,16 +108,16 @@ html{
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: rgb(200,0,0);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 9px #999;
+    box-shadow: 0 9px rgb(44,44,44);
 }
 
-.button:hover {background-color: #3e8e41}
+.button:hover {background-color:  rgb(170,0,0)}
 
 .button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
+    background-color:  rgb(160,0,0);
+    box-shadow: 0 5px rgb(22,22,22);
     transform: translateY(4px);
 }

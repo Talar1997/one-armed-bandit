@@ -1,5 +1,5 @@
-function Credits(){
-    this.credit = 500
+function Credits(credits){
+    this.credit = credits
     this.bet = 50
     this.lastWin = 0
 
