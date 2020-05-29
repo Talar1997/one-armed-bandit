@@ -9,29 +9,45 @@
     </head>
     <body>
     <div class="container">
-        <canvas id="canvasContainer" width="600" height="400" class="gradientBackground">
-            Canvas is not supported by your browser
-        </canvas>
-        <canvas id="creditBoard" width="600" height="100" style="background-color: black">
-            Canvas is not supported by your browser
-        </canvas>
-        <canvas id="controlBoard" width="600" height="100" style="background-color: blue">
-            Canvas is not supported by your browser
-        </canvas>
-        <div style="display: none">
-            <img id="icons" src="images/icons.png">
+        <div id="header">
+            <span id="logo">GOLD CASINO</span>
         </div>
-        <button id="lotteryButton" onClick="game.startSpinning()">Losuj</button>
-        <span class="fontFaceTest"></span>
+
+        <div id="screenContainer">
+            <canvas id="canvasContainer" width="600" height="400" class="gradientBackground">
+                Canvas is not supported by your browser
+            </canvas>
+            <canvas id="creditBoard" width="600" height="70" class="gradientCreditBackground">
+                Canvas is not supported by your browser
+            </canvas>
+            <canvas id="controlBoard" width="600" height="20" style="background-color: black">
+                Canvas is not supported by your browser
+            </canvas>
+            <div class="buttonPanel">
+                <button class="button" id="betMinus" onClick="game.startSpinning()">BET-</button>
+                <button class="button" id="betPlus" onClick="game.startSpinning()">BET+</button>
+                <button class="button" id="lotteryButton" onClick="game.startSpinning()">SPIN</button>
+            </div>
+        </div>
+
+
+        <div id="footer">
+
+        </div>
+
+    </div>
+    <div style="display: none">
+        <img id="icons" src="images/icons.png">
     </div>
 
-    <script src="scripts/game.js"></script>
-    <script src="scripts/sounds.js"></script>
+    <script src="scripts/Game.js"></script>
+    <script src="scripts/Sounds.js"></script>
     <script src="scripts/canvas.js"></script>
     <script src="scripts/SlotItem.js"></script>
     <script src="scripts/SlotItems.js"></script>
     <script src="scripts/SlotInitializer.js"></script>
     <script src="scripts/PrizeGenerator.js"></script>
+    <script src="scripts/Credits.js"></script>
     <script>
         let game = new Game();
         game.initialize();
