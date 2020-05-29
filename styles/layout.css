@@ -1,11 +1,15 @@
+@font-face {
+    font-family: 'DigitalFont';
+    src: url('../fonts/DSEG7-Classic-MINI/DSEG7ClassicMini-Regular.woff') format("woff"),
+    url('../fonts/DSEG7-Classic-MINI/DSEG7ClassicMini-Regular.woff2') format("woff2"),
+    url('../fonts/DSEG7-Classic-MINI/DSEG7ClassicMini-Regular.ttf') format("truetype");
+}
+
 * {
+    font-family: 'DigitalFont';
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: helvetica, arial, sans-serif;
-    font-size: 14px;
-    font-stretch: 100%;
-    font-style: normal;
 }
 
 html{
@@ -20,3 +24,17 @@ html{
   width: 600px;
   padding: 10px;
 }
+
+.gradientBackground{
+    background: rgb(255,254,225);
+    background: -moz-radial-gradient(circle, rgba(255,254,225,1) 0%, rgba(252,252,252,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(255,254,225,1) 0%, rgba(252,252,252,1) 100%);
+    background: radial-gradient(circle, rgba(255,254,225,1) 0%, rgba(252,252,252,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fffee1",endColorstr="#fcfcfc",GradientType=1);
+}
+
+.fontFaceTest{
+    color: white;
+    font-family: 'DigitalFont', Arial, sans-serif;
+}
+

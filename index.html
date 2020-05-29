@@ -9,13 +9,20 @@
     </head>
     <body>
     <div class="container">
-        <canvas id="canvasContainer" width="600" height="400" style="background-color: rgb(200,200,200)">
+        <canvas id="canvasContainer" width="600" height="400" class="gradientBackground">
+            Canvas is not supported by your browser
+        </canvas>
+        <canvas id="creditBoard" width="600" height="100" style="background-color: black">
+            Canvas is not supported by your browser
+        </canvas>
+        <canvas id="controlBoard" width="600" height="100" style="background-color: blue">
             Canvas is not supported by your browser
         </canvas>
         <div style="display: none">
             <img id="icons" src="images/icons.png">
         </div>
         <button id="lotteryButton" onClick="game.startSpinning()">Losuj</button>
+        <span class="fontFaceTest"></span>
     </div>
 
     <script src="scripts/game.js"></script>

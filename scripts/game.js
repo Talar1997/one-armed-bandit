@@ -8,6 +8,7 @@ function Game() {
     this.initialize = () => {
         if(!canvas.getContext) throw new Error("Canvas is not supported by your browser");
         this.createStartScreen()
+
     };
 
     this.setDefaultVariables = () => {
@@ -48,6 +49,7 @@ function Game() {
 
     this.startAnimation = () => {
         ctx.clearRect(0,0,600,600);
+
         newPos += positionOffset;
 
         items.forEach((row, index) => {

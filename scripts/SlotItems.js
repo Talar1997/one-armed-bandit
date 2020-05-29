@@ -1,10 +1,10 @@
 function SlotItems() {
     this.slotItemsArray = [
-        new SlotItem("cherry", 0, 0, 100),
-        new SlotItem("plum", 1, 0, 200),
-        new SlotItem("bell", 2, 0, 300),
-        new SlotItem("clover", 3, 0, 400),
-        new SlotItem("lemon", 0, 1, 500),
+        new SlotItem("cherry", 0, 0, 10),
+        new SlotItem("plum", 1, 0, 25),
+        new SlotItem("bell", 2, 0, 30),
+        new SlotItem("clover", 3, 0, 50),
+        new SlotItem("lemon", 0, 1, 100),
         new SlotItem("coin", 1, 1, 600),
         new SlotItem("bar", 2, 1, 700),
         new SlotItem("apple", 3, 1, 800),
