@@ -1,6 +1,5 @@
 function SlotItems() {
     this.slotItemsArray = [
-        //common
         new SlotItem("cherry", 0, 0, 100),
         new SlotItem("plum", 1, 0, 200),
         new SlotItem("bell", 2, 0, 300),
@@ -20,13 +19,13 @@ function SlotItems() {
     ];
 
     this.getSlotItem = (key) => {
-        let result = null
+        let result = null;
         this.slotItemsArray.forEach(element => {
             if(element.key === key) result = element;
-        })
-        if(result === null) throw new Error("Slot item with that key doesn't exists")
+        });
+        if(result === null) throw new Error("Slot item with that key doesn't exists");
         return result
-    }
+    };
 
     this.getRandomItem = () => {
         return this.slotItemsArray[Math.floor(Math.random() * this.slotItemsArray.length)];
