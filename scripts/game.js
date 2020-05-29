@@ -3,24 +3,24 @@ function Game() {
     let speed = 10;
     let newPos = 0;
     let positionOffset = 40;
-    let slotInitializer = new SlotInitializer()
+    let slotInitializer = new SlotInitializer();
 
     this.initialize = () => {
-        if(!canvas.getContext) throw new Error("Canvas is not supported by your browser")
+        if(!canvas.getContext) throw new Error("Canvas is not supported by your browser");
         this.createStartScreen()
-    }
+    };
 
     this.setDefaultVariables = () => {
         newPos = 0;
-        items = null
+        items = null;
         this.setSpinningSpeed(spinningSpeed.FAST);
-    }
+    };
 
     const spinningSpeed = {
         FAST: "fast",
         MID: "middle",
         SLOW: "slow"
-    }
+    };
 
     this.setSpinningSpeed = (option) => {
         switch(option){
@@ -34,7 +34,7 @@ function Game() {
                 positionOffset = 10;
                 break;
         }
-    }
+    };
 
     this.createStartScreen = () => {
         let items = slotInitializer.initializeArray(3);
@@ -44,7 +44,7 @@ function Game() {
                 el.drawIcon(index*icon.SIZE, newPos + yOffsetPos);
             })
         })
-    }
+    };
 
     this.startAnimation = () => {
         ctx.clearRect(0,0,600,600);
@@ -55,37 +55,41 @@ function Game() {
             row.forEach((el, index) =>{
                 el.drawIcon(index*icon.SIZE, newPos + yOffsetPos);
             })
-        })
+        });
 
-        this.changeSpeedValue()
+        this.changeSpeedValue();
 
-        if(newPos > (items.length * icon.SIZE) - 285) this.endOfSpinning(items)
+        if(newPos > (items.length * icon.SIZE) - 285) this.endOfSpinning(items);
         else setTimeout(this.startAnimation, speed);
-    }
+    };
 
     this.changeSpeedValue = () => {
-        if(newPos > (items.length * icon.SIZE) / 1.15) this.setSpinningSpeed(spinningSpeed.MID)
+        if(newPos > (items.length * icon.SIZE) / 1.15) this.setSpinningSpeed(spinningSpeed.MID);
         if(newPos > (items.length * icon.SIZE) / 1.08) this.setSpinningSpeed(spinningSpeed.SLOW)
-    }
+    };
 
     this.endOfSpinning = (items) => {
-        let winningRow = items[items.length-2]
+        let winningRow = items[items.length-2];
 
         if(winningRow[0] === winningRow[1] && winningRow[1] === winningRow[2]){
             this.winFunction(winningRow[0])
         }
 
-        document.querySelector("#lotteryButton").disabled = false
-    }
+        this.changeButtonState(false)
+    };
 
     this.winFunction = (prize) => {
         console.log("You win: $" + prize.value)
-    }
+    };
 
     this.startSpinning = () => {
-        document.querySelector("#lotteryButton").disabled = true
+        this.changeButtonState(true);
         this.setDefaultVariables();
-        items = slotInitializer.initializeArray(30)
+        items = slotInitializer.initializeArray(30);
         this.startAnimation();
+    };
+
+    this.changeButtonState = (state) => {
+        document.querySelector("#lotteryButton").disabled = state;
     }
 }

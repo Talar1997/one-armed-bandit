@@ -1,3 +1,20 @@
 \babel@toc {polish}{}
-\contentsline {section}{\numberline {1}Treść zadania (założenia projektowe)}{2}%
+\contentsline {section}{\numberline {1}Wstęp}{2}%
+\contentsline {subsection}{\numberline {1.1}Założenia projektowe}{2}%
+\contentsline {subsection}{\numberline {1.2}Wymagania funkcjonalne}{2}%
+\contentsline {subsection}{\numberline {1.3}Wymagania niefunkcjonalne}{2}%
+\contentsline {section}{\numberline {2}Specyfikacja zewnętrzna}{2}%
+\contentsline {subsection}{\numberline {2.1}Instrukcja obsługi}{2}%
+\contentsline {section}{\numberline {3}Specyfikacja wewnętrzna}{2}%
+\contentsline {subsection}{\numberline {3.1}Struktura aplikacji}{2}%
+\contentsline {subsection}{\numberline {3.2}Wzorce projektowe}{2}%
+\contentsline {subsection}{\numberline {3.3}Biblioteki i API}{2}%
+\contentsline {subsection}{\numberline {3.4}Kod źródłowy}{2}%
+\contentsline {subsection}{\numberline {3.5}Uruchomienie aplikacji w środowisku deweloperskim}{2}%
+\contentsline {section}{\numberline {4}Podsumowanie}{2}%
+\contentsline {subsection}{\numberline {4.1}Uwagi}{2}%
+\contentsline {subsection}{\numberline {4.2}Błędy}{2}%
+\contentsline {subsection}{\numberline {4.3}Możliwość dalszego rozwoju}{2}%
+\contentsline {subsection}{\numberline {4.4}Wnioski}{2}%
 \contentsline {section}{Spis rysunków}{3}%
+\contentsline {section}{Materiały}{4}%
