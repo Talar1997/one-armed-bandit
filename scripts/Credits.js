@@ -1,7 +1,7 @@
 function Credits(credits){
-    this.credit = credits
-    this.bet = 50
-    this.lastWin = 0
+    this.credit = credits;
+    this.bet = bet.MIN_BET;
+    this.lastWin = 0;
 
     this.takePayment = () => {
         if(this.credit >= this.bet) this.credit = (this.credit - this.bet);
@@ -16,8 +16,8 @@ function Credits(credits){
         else throw new TypeError("Prize has to be number")
     }
 
-    this.changeBet = (bet) =>{
-        if(bet >= 50 && bet <= 1000) this.bet = bet
-        else throw new RangeError("Invalid bet range. Bet should be int from 50-1000")
+    this.changeBet = (newBet) =>{
+        if(newBet >= bet.MIN_BET  && newBet <= bet.MAX_BET) this.bet = newBet
+        else throw new RangeError("Invalid bet range. Bet should be int from: " + bet.MIN_BET + "-" + bet.MAX_BET)
     }
 }

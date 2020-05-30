@@ -1,77 +1,34 @@
 function Game() {
+    let slotInitializer = new SlotInitializer();
+    let credits = new Credits(moneyOnStart);
+    let soundManager = new SoundManager();
+    let contentCreator = new StaticContentCreator();
     let items = null;
-    let speed = 10;
     let newPos = 0;
     let positionOffset = 40;
-    let slotInitializer = new SlotInitializer();
-    let credits = new Credits(1000);
-    let soundManager = new Sounds();
-
-    const spinningSpeed = {
-        FAST: "fast",
-        MID: "middle",
-        SLOW: "slow"
-    };
 
     this.initialize = () => {
-        if (!canvas.getContext) throw new Error("Canvas is not supported by your browser");
         this.createStartScreen();
         this.initializeBackgroundMusic();
-        this.updateCredits();
-        this.createLines();
-        this.createLabels();
+        contentCreator.draw();
+        contentCreator.updateCredits(credits);
     };
 
-    this.refreshIcons = () => {
-        this.createStartScreen();
-    }
-
     this.initializeBackgroundMusic = () => {
-        let backgroundMusic = new Sounds()
-        backgroundMusic.sound.loop = true;
-        backgroundMusic.sound.volume = 0.2;
-        backgroundMusic.play('sounds/loop.mp3');
+        soundManager.play(sounds.BACKGROUND, true, 0.2);
     };
 
     this.setDefaultVariables = () => {
+        this.setSpinningSpeed(spinningSpeed.FAST);
         newPos = 0;
         items = null;
-        this.setSpinningSpeed(spinningSpeed.FAST);
     };
 
-    this.updateCredits = () => {
-        creditBoardCtx.clearRect(0,0,600,70)
-        creditBoardCtx.font = "30px DigitalFont";
-        creditBoardCtx.fillStyle = "white";
-        creditBoardCtx.textAlign = "start";
-        creditBoardCtx.fillText(credits.credit, 10, 50);
-        creditBoardCtx.textAlign = "center";
-        creditBoardCtx.fillText(credits.bet, 280, 50);
-        creditBoardCtx.textAlign = "end";
-        creditBoardCtx.fillText(credits.lastWin, 590, 50);
-    };
-
-    this.increaseBet = () => {
-        credits.changeBet(credits.bet + 50);
-        this.updateCredits();
+    this.changeBet = (amount) => {
+        soundManager.play(sounds.CLICK);
+        credits.changeBet(credits.bet + amount);
+        contentCreator.updateCredits(credits);
     }
-
-    this.decreaseBet = () => {
-        credits.changeBet(credits.bet - 50);
-        this.updateCredits();
-    }
-
-    this.createLabels = () => {
-        controlBoardCtx.clearRect(0,0,600,100)
-        controlBoardCtx.font = "15px Consolas";
-        controlBoardCtx.fillStyle = "white";
-        controlBoardCtx.textAlign = "start";
-        controlBoardCtx.fillText("CREDITS", 10, 15);
-        controlBoardCtx.textAlign = "center";
-        controlBoardCtx.fillText("BET", 280, 15);
-        controlBoardCtx.textAlign = "end";
-        controlBoardCtx.fillText("LAST WIN", 590, 15);
-    };
 
     this.setSpinningSpeed = (option) => {
         switch (option) {
@@ -97,35 +54,10 @@ function Game() {
         })
     };
 
-    this.createLines = () => {
-        ctx.lineWidth = 5;
-        ctx.beginPath();
-        ctx.moveTo(200, 0);
-        ctx.lineTo(200, 400);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(400, 0);
-        ctx.lineTo(400, 400);
-        ctx.stroke();
-
-        //ctx.fillStyle = "red";
-        ctx.beginPath();
-        ctx.moveTo(0,180);
-        ctx.lineTo(0,220);
-        ctx.lineTo(20,200);
-
-        ctx.fill();
-        ctx.beginPath();
-        ctx.moveTo(600,180);
-        ctx.lineTo(600,220);
-        ctx.lineTo(580,200);
-        ctx.fill();
-    };
 
     this.startAnimation = () => {
         ctx.clearRect(0, 0, 600, 600);
-        this.createLines();
+        contentCreator.createLines();
 
         newPos += positionOffset;
 
@@ -139,7 +71,7 @@ function Game() {
         this.changeSpeedValue();
 
         if (newPos > (items.length * icon.SIZE) - 285) this.endOfSpinning(items);
-        else setTimeout(this.startAnimation, speed);
+        else setTimeout(this.startAnimation, animationSpeed);
     };
 
     this.changeSpeedValue = () => {
@@ -158,23 +90,24 @@ function Game() {
     };
 
     this.winHandler = (prize) => {
-        if (prize.value > 0) soundManager.play("sounds/coins.mp3");
-        if ((prize.value * (credits.bet / 50)) > 10000) soundManager.play("sounds/jackpot.mp3");
+        if (prize.value > 0) soundManager.play(sounds.COINS);
+        if ((prize.value * (credits.bet / 50)) > 10000) soundManager.play(sounds.JACKPOT);
         credits.takePrize(prize.value * (credits.bet / 50));
-        this.updateCredits();
+        contentCreator.updateCredits(credits);
     };
 
     this.startSpinning = () => {
+        soundManager.play(sounds.CLICK);
         try{
             credits.takePayment()
-            this.updateCredits()
+            contentCreator.updateCredits(credits);
             this.changeButtonState(true);
             this.setDefaultVariables();
             items = slotInitializer.initializeArray(48);
-            soundManager.play("sounds/spin.mp3");
+            soundManager.play(sounds.SPIN);
             this.startAnimation();
         }catch(error){
-            console.log("not enought money", credits.credit);
+            console.log("Not enought money", credits.credit);
         }
 
     };

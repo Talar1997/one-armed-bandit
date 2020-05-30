@@ -7,7 +7,7 @@
         <meta name="author" content="Adam Talarczyk">
         <link rel="stylesheet" href="styles/layout.css">
     </head>
-    <body>
+    <body onload="game.initialize();">
     <div style="display: none">
         <img id="icons" src="images/icons.png">
     </div>
@@ -32,22 +32,24 @@
 
         <div id="footer">
             <div class="buttonPanel">
-                <button class="button" id="betMinus" onClick="game.decreaseBet()">BET-</button>
-                <button class="button" id="betPlus" onClick="game.increaseBet()">BET+</button>
+                <button class="button" id="betMinus" onClick="game.changeBet(-50)">BET-</button>
+                <button class="button" id="betPlus" onClick="game.changeBet(50)">BET+</button>
                 <button class="button" id="lotteryButton" onClick="game.startSpinning()">SPIN</button>
             </div>
         </div>
 
     </div>
 
-    <script defer src="scripts/Game.js"></script>
-    <script defer src="scripts/Sounds.js"></script>
-    <script defer src="scripts/canvas.js"></script>
-    <script defer src="scripts/SlotItem.js"></script>
-    <script defer src="scripts/SlotItems.js"></script>
-    <script defer src="scripts/SlotInitializer.js"></script>
-    <script defer src="scripts/PrizeGenerator.js"></script>
-    <script defer src="scripts/Credits.js"></script>
-    <script defer src="scripts/init.js"></script>
+    <script  src="scripts/Game.js"></script>
+    <script  src="scripts/StaticContentCreator.js"></script>
+    <script  src="scripts/Sound.js"></script>
+    <script  src="scripts/SoundManager.js"></script>
+    <script  src="scripts/config.js"></script>
+    <script  src="scripts/SlotItem.js"></script>
+    <script  src="scripts/SlotItems.js"></script>
+    <script  src="scripts/SlotInitializer.js"></script>
+    <script  src="scripts/PrizeGenerator.js"></script>
+    <script  src="scripts/Credits.js"></script>
+    <script  src="scripts/init.js"></script>
     </body>
 </html>
