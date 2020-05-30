@@ -88,7 +88,7 @@ Gracz ma możliwość wylosowania figur spośród 16 różnych elementów (rysun
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{img/ikony.PNG}
-\caption{Dostępne figury} 
+\caption{Wszystkie dostępne figury} 
 \end{figure}
 
 Gra kończy się w momencie, kiedy nie posiada już kredytów, by ponownie zakręcić kołem. Może on wtedy odświeżyć stronę, by ponownie mieć \verb|$1000| kredytów.
@@ -135,7 +135,7 @@ Aplikacja przetestowana została na przeglądarkach takich jak:
 
 Wszystkie wyżej wymienione przeglądarki (poza Internet Explorerem) nie wykazywały żadnych problemów w obsłudze aplikacji. Priorytetem podczas tworzenie aplikacji było jej sprawne działanie na wszystkich nowszych i popularniejszych przeglądarkach (do których IE się nie zalicza).
 
-Dodatkowo, projekt został umieszczony na zewnętrznym serwerze w celu przetestowania go online. Adres strony, na której znajduje się projekt: \newline \verb|www.projects.talar.tech/pwag|
+Dodatkowo, projekt został umieszczony na zewnętrznym serwerze w celu przetestowania go online. Adres strony, na której znajduje się projekt: \newline \verb|projects.talar.tech/pwag|
 
 \subsection{Błędy}
 Podczas tworzenia aplikacji pojawiały się mniej lub bardziej znaczace błędy, które sukcesywnie były usuwane. Jednym z nich był problem, kiedy aplikacja umieszczona na zewnętrznym serwerze najpierw pobierała skrypty, a na końcu dopiero pobierała obrazy niezbędne do działania aplikacji w związku z czym poczatkowo koło maszyny było puste. Problem rozwiązałem inicjalizując grę dopiero po załadowaniu tagu \verb|<body>|.
@@ -144,7 +144,7 @@ Podczas tworzenia aplikacji pojawiały się mniej lub bardziej znaczace błędy,
 Projekt został napisany tak, by zminimalizować trudność jej dalszego rozwoju w związku z czym istnieje perspektywa na jej ulepszanie bądź też połączenie z inną aplikacją (np. z serwerem, który losowałby nagrody i przypisywał do konta użytkownika). Istnieje również możliwość zmiany obrazów figur. Na chwile obecną pobierane są one z jednego pliku .png, który jest ``cięty'' na równe kawałki po 200 pikseli.
 
 \subsection{Wnioski}
-Canvas wprowadzony w HTML5 w moim odczuciu jest zbliżony w programowaniu do języka Processing.
+Canvas wprowadzony w HTML5 w moim odczuciu jest zbliżony w programowaniu do języka Processing. Programowanie przy użyciu tej technologii wydaje się być całkiem proste, intuicyjne i przyjemne. Mimo tego, część elementów wizualnych realizowałem również przy użyciu html i CSS ponieważ dawało to lepszy efekt.
 
 
 \newpage
@@ -152,10 +152,28 @@ Canvas wprowadzony w HTML5 w moim odczuciu jest zbliżony w programowaniu do ję
 \listoffigures
 \newpage
 
+
 \begin{thebibliography}{9}
 \addcontentsline{toc}{section}{Materiały}
+\bibitem{canvas}
+https://developer.mozilla.org/pl/docs/Web/HTML/Canvas
+
 \bibitem{background}
 https://www.deviantart.com/giozaga/art/Casino-Card-Background-Wallpaper-HD-1920x1080-454608180
+\bibitem{font-casino}
+https://www.dafont.com/casino-2.font
+\bibitem{font-digital}
+https://www.1001fonts.com/digital-7-font.html
+\bibitem{icons}
+https://www.vectorstock.com/royalty-free-vector/slot-machine-symbols-set-vector-1067277
+\bibitem{sound}
+https://youtu.be/UpkC0vMxdDU
+\bibitem{sound2}
+https://youtu.be/lyZOe9pkZNY
+\bibitem{sound3}
+https://youtu.be/ZG-VFZ87U7o
+\bibitem{sound4}
+\verb|https://youtu.be/Sx_LA9OUdVE|
 
 
 \end{thebibliography}
