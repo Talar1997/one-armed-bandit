@@ -1,0 +1,32 @@
+.gradientBackground{
+    background: rgb(255,254,225);
+    background: -moz-radial-gradient(circle, rgba(255,254,225,1) 0%, rgba(252,252,252,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(255,254,225,1) 0%, rgba(252,252,252,1) 100%);
+    background: radial-gradient(circle, rgba(255,254,225,1) 0%, rgba(252,252,252,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fffee1",endColorstr="#fcfcfc",GradientType=1);
+
+}
+
+.gradientCreditBackground{
+    background: rgb(55,55,55);
+    background: -moz-radial-gradient(circle, rgba(55,55,55,1) 0%, rgba(28,28,28,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(55,55,55,1) 0%, rgba(28,28,28,1) 100%);
+    background: radial-gradient(circle, rgba(55,55,55,1) 0%, rgba(28,28,28,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#373737",endColorstr="#1c1c1c",GradientType=1);
+}
+
+#screenContainer{
+    width: 700px;
+    border-top: 50px solid #b96a03;
+    border-left: 50px solid #e4a203;
+    border-right: 50px solid #e4a203;
+    border-bottom: 80px solid #f4d115;
+}
+
+#canvasContainer{
+    outline: 5px solid black;
+    outline-offset: -5px;
+    -webkit-box-shadow: inset 0px 0px 17px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 17px 4px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 17px 4px rgba(0,0,0,0.75);
+}

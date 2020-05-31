@@ -4,7 +4,7 @@ function Credits(credits){
     this.lastWin = 0;
 
     this.takePayment = () => {
-        if(this.credit >= this.bet) this.credit = (this.credit - this.bet);
+        if(this.credit >= this.bet) this.credit -= this.bet;
         else throw new Error("No credits to perform this actions");
     }
 
