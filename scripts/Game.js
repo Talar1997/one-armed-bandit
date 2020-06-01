@@ -1,5 +1,5 @@
-function Game() {
-    let slotInitializer = new SlotInitializer();
+function Game(columns) {
+    let slotInitializer = new SlotInitializer(columns);
     let credits = new Credits(moneyOnStart);
     let soundManager = new SoundManager();
     let contentCreator = new StaticContentCreator();
@@ -45,9 +45,9 @@ function Game() {
     };
 
     this.createStartScreen = () => {
-        let items = slotInitializer.initializeArray(3);
+        let items = slotInitializer.initializeRandomArray(3);
         items.forEach((row, index) => {
-            let yOffsetPos = (index * icon.SIZE) - 100;
+            let yOffsetPos = (index * icon.SIZE) - 75;
             row.forEach((el, index) => {
                 el.drawIcon(index * icon.SIZE, newPos + yOffsetPos);
             })
@@ -56,7 +56,7 @@ function Game() {
 
 
     this.startAnimation = () => {
-        ctx.clearRect(0, 0, 600, 600);
+        ctx.clearRect(0, 0, width, height);
         contentCreator.createLines();
 
         newPos += positionOffset;
@@ -80,19 +80,53 @@ function Game() {
     };
 
     this.endOfSpinning = (items) => {
-        let winningRow = items[items.length - 2];
-
-        if (winningRow[0] === winningRow[1] && winningRow[1] === winningRow[2]) {
-            this.winHandler(winningRow[0]);
-        }
+        if(columns <= 3) this.checkForWin([items[items.length - 2]])
+        else this.checkForWin([
+            items[items.length - 2],
+            items[items.length - 1],
+            items[items.length - 3]
+        ]);
 
         this.changeButtonState(false);
     };
 
+    this.checkForWin = (rows) =>{
+        let potentialPrize = 0;
+
+        rows.forEach( (el, index) => {
+            let rowLength = el.length;
+            let isRowWinning = true;
+            for(let i = 1; i < rowLength - 1; i++){
+                if(el[i-1] !== el[i]) {
+                    isRowWinning = false;
+                    break;
+                }
+            }
+
+            if(isRowWinning){
+                switch (index){
+                    case 0:
+                        let multiplier = 0.75;
+                        if(columns <= 3) multiplier = 1;
+                        potentialPrize += (el[0].value) * multiplier;
+                        break;
+                    case 1:
+                        potentialPrize += (el[0].value) * 0.5
+                        break;
+                    case 2:
+                        potentialPrize += (el[0].value) * 0.25;
+                        break;
+                }
+            }
+        })
+
+        this.winHandler(Math.floor(potentialPrize));
+    }
+
     this.winHandler = (prize) => {
-        if (prize.value > 0) soundManager.play(sounds.COINS);
-        if ((prize.value * (credits.bet / 50)) > 10000) soundManager.play(sounds.JACKPOT);
-        credits.takePrize(prize.value * (credits.bet / 50));
+        if (prize > 0) soundManager.play(sounds.COINS);
+        if ((prize * (credits.bet / 50)) > 10000) soundManager.play(sounds.JACKPOT);
+        credits.takePrize(prize * (credits.bet / 50));
         contentCreator.updateCredits(credits);
     };
 

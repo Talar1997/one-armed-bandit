@@ -8,12 +8,21 @@
         <link rel="stylesheet" href="styles/layout.css">
         <link rel="stylesheet" href="styles/canvas.css">
         <link rel="stylesheet" href="styles/controls.css">
+        <link rel="stylesheet" href="styles/dropdown.css">
     </head>
     <body onload="game.initialize();">
+    <div class="dropdown" style="float:right;">
+        <button class="dropbtn">Wariant gry</button>
+        <div class="dropdown-content">
+            <a href="#" class="active">3-bębnowy</a>
+            <a href="second.html" >5-bębnowy</a>
+        </div>
+    </div>
+
     <div style="display: none">
         <img id="icons" src="images/icons.png">
     </div>
-    <div class="container">
+    <div class="container" id="mainContainer">
         <div id="header">
             <span id="logo">GOLD CASINO</span>
         </div>
@@ -53,5 +62,8 @@
     <script  src="scripts/PrizeGenerator.js"></script>
     <script  src="scripts/Credits.js"></script>
     <script  src="scripts/init.js"></script>
+    <script>
+        let game = new Game(3);
+    </script>
     </body>
 </html>

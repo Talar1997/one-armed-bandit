@@ -56,6 +56,7 @@ Gracz na samym początku dysponuje określoną ilością gotówki, za którą mo
 
 \subsection{Wymagania funkcjonalne}
 \begin{itemize}
+	\item Aplikacja umożliwia grę w dwóch wariantach: 3-bębnowym, gdzie wygrywa tylko jedna (środkowa) linia; 5-bębnowym, gdzie wygrywają 3 poziome linie, ale wartość nagród jest mniejsza w zależności od linii.
 	\item Gracz może zwiększyć i zmniejszyć stawkę, za jaką gra.
 	\item Gracz może zakręcić kołem, jeśli ma wystarczającą ilość kredytów.
 	\item Jeśli wylosowana zostanie nagroda, kredyty trafią na konto grającego.
@@ -66,7 +67,8 @@ Gracz na samym początku dysponuje określoną ilością gotówki, za którą mo
 \subsection{Wymagania niefunkcjonalne}
 \begin{itemize}
 	\item W kole znajduje się 48 kolumn z ikonami do wylosowania - ma to związek z czasem trwania dźwięku losowania.
-	\item Nagroda zawsze znajduje się na 47 pozycji - ułatwia to obliczenie o ile pikseli muszą przesunąć się dane obrazy, by zatrzymać się na nagrodzie.
+	\item W wariancie 3-bębnowym - nagroda zawsze znajduje się na 47 pozycji - ułatwia to obliczenie o ile pikseli muszą przesunąć się dane obrazy, by zatrzymać się na nagrodzie.
+	\item W wariancie 5-bębnowym - nagroda znajduje się na pozycjach 46, 47 oraz 48.
 	\item Nagroda generowana jest losowo na podstawie z góry ustalonej tablicy prawdopodobieństwa.
 	\item System musi mieć możliwość rozbudowy w przyszłości.
 	\item Koło maszyny może kręcić się z trzema, z góry ustalonymi prędkościami.
@@ -75,15 +77,25 @@ Gracz na samym początku dysponuje określoną ilością gotówki, za którą mo
 
 \section{Specyfikacja zewnętrzna}
 \subsection{Instrukcja obsługi}
-Gracz na start otrzymuje \verb|$1000| kredytów. Do dyspozycji ma on trzy przyciski: \verb|bet+|, \verb|bet-| oraz \verb|spin| (widoczne na rysunku nr 1). Pierwsze dwa zmieniają stawkę, za jaką gracz może wejść do gry, drugi zaś zakręca kołem maszyny. Podczas trwania losowania, przyciski są zablokowane. Następna rozgrywka bądź zmiana stawko może odbyć się tylko po zakończonym poprzednim losowaniu. Samo losowanie trwa kilkanaście sekund, podczas którego gracz może usłyszeć dźwięk kręcenia się bębna charakterystyczny dla tego typu maszyn. Jeżeli wylosowane zostaną trzy takie same figury, przyznana zostaje nagroda zgodnie z góry ustaloną stawką pomnożoną przez mnożnik. Nagrody powyżej \verb|$10000| kredytów posiadają dodatkowo specjalny dźwięk.
+Gracz na start otrzymuje \verb|$1000| kredytów. Do dyspozycji ma on trzy przyciski: \verb|bet+|, \verb|bet-| oraz \verb|spin| (widoczne na rysunku nr 1). Pierwsze dwa zmieniają stawkę, za jaką gracz może wejść do gry, drugi zaś zakręca kołem maszyny. Podczas trwania losowania, przyciski są zablokowane. Następna rozgrywka bądź zmiana stawko może odbyć się tylko po zakończonym poprzednim losowaniu. Samo losowanie trwa kilkanaście sekund, podczas którego gracz może usłyszeć dźwięk kręcenia się bębna charakterystyczny dla tego typu maszyn. Jeżeli wylosowane zostaną trzy takie same figury, przyznana zostaje nagroda zgodnie z góry ustaloną stawką pomnożoną przez mnożnik. Nagrody powyżej \verb|$10000| kredytów posiadają dodatkowo specjalny dźwięk. Gracz ma do dyspozycji dwa tryby rozgrywki:
+\begin{itemize}
+	\item 3-bębnowa maszyna - tylko 3 pola się kręcą, wyznacznikiem wygranej jest wylosowania trzech takich samych figur na środkowej linii.
+	\item 5-bębnowa maszyna - 5 kolumn jest w ruchu (rysunek nr. 2), nagrodę można wylosować w linii poziomej na każdej z trzech kolumn, nagrody sumują się, ale ich wartość jest odpowiednio mniejsza. Dla środkowego rzędu jest to wartość pola * 0.75, dla pierwszego rzędu wartość * 0.5 a dla ostatniego wartość * 0.25.
+\end{itemize}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{img/screen.PNG}
-\caption{Wygląd maszyny losującej} 
+\caption{Wygląd maszyny losującej w wariancie 3-bębnowym} 
 \end{figure}
 
-Gracz ma możliwość wylosowania figur spośród 16 różnych elementów (rysunek nr. 2). Biorąc pod uwagę, że koło maszyny losuje po trzy figury, daje nam to kombinację 4096 różnych kombinacji.
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{img/screen32.PNG}
+\caption{Wygląd maszyny losującej w wariancie 5-bębnowym} 
+\end{figure}
+
+Gracz ma możliwość wylosowania figur spośród 16 różnych elementów (rysunek nr. 3). Biorąc pod uwagę, że koło maszyny losuje po trzy figury, daje nam to kombinację 4096 różnych kombinacji.
 
 \begin{figure}[H]
 \centering

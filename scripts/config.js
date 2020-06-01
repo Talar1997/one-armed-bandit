@@ -1,4 +1,5 @@
 const mainBoard = document.querySelector("#canvasContainer");
+const { width, height } = mainBoard.getBoundingClientRect();
 const ctx = mainBoard.getContext("2d");
 
 const creditBoard = document.querySelector("#creditBoard");

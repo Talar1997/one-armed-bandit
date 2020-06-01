@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>One-armed bandit</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ruletka">
+    <meta name="keywords" content="ruletka, losowanie, hazard">
+    <meta name="author" content="Adam Talarczyk">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/canvas.css">
+    <link rel="stylesheet" href="styles/controls.css">
+    <link rel="stylesheet" href="styles/dropdown.css">
+</head>
+<body onload="game.initialize();">
+<div class="dropdown" style="float:right;">
+    <button class="dropbtn">Wariant gry</button>
+    <div class="dropdown-content">
+        <a href="index.html" >3-bębnowy</a>
+        <a href="#" class="active">5-bębnowy</a>
+    </div>
+</div>
+
+<div style="display: none">
+    <img id="icons" src="images/icons.png">
+</div>
+<div class="container" id="mainContainer">
+    <div id="header">
+        <span id="logo">GOLD CASINO</span>
+    </div>
+
+    <div id="screenContainer" class="containerBigger">
+        <canvas id="canvasContainer" width="1000" height="450" class="gradientBackground">
+            Canvas is not supported by your browser
+        </canvas>
+        <canvas id="creditBoard" width="1000" height="70" class="gradientCreditBackground">
+            Canvas is not supported by your browser
+        </canvas>
+        <canvas id="controlBoard" width="1000" height="20" style="background-color: black">
+            Canvas is not supported by your browser
+        </canvas>
+
+    </div>
+
+
+    <div id="footer">
+        <div class="buttonPanel">
+            <button class="button" id="betMinus" onClick="game.changeBet(-50)">BET-</button>
+            <button class="button" id="betPlus" onClick="game.changeBet(50)">BET+</button>
+            <button class="button" id="lotteryButton" onClick="game.startSpinning()">SPIN</button>
+        </div>
+    </div>
+
+</div>
+
+<script  src="scripts/Game.js"></script>
+<script  src="scripts/StaticContentCreator.js"></script>
+<script  src="scripts/Sound.js"></script>
+<script  src="scripts/SoundManager.js"></script>
+<script  src="scripts/config.js"></script>
+<script  src="scripts/SlotItem.js"></script>
+<script  src="scripts/SlotItems.js"></script>
+<script  src="scripts/SlotInitializer.js"></script>
+<script  src="scripts/PrizeGenerator.js"></script>
+<script  src="scripts/Credits.js"></script>
+<script  src="scripts/init.js"></script>
+<script>
+    let game = new Game(5);
+</script>
+</body>
+</html>

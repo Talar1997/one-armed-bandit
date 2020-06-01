@@ -1,55 +1,87 @@
 function StaticContentCreator(){
+    const { width, height } = mainBoard.getBoundingClientRect();
+
     this.draw = () => {
         this.createLabels();
         this.createLines();
     }
 
+    this.createLines = () => {
+        ctx.lineWidth = 5;
+        let startPosition = 200;
+        while(startPosition < width){
+            ctx.beginPath();
+            ctx.moveTo(startPosition, 0);
+            ctx.lineTo(startPosition, height);
+            ctx.stroke();
+            startPosition += 200;
+        }
+
+        this.createTriangles();
+        if(width > 600) this.createAdditionalTriangles()
+    };
+
+    this.createTriangles = () => {
+        ctx.beginPath();
+        ctx.moveTo(0,(height/2)-20);
+        ctx.lineTo(0,(height/2)+20);
+        ctx.lineTo(20,height/2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(width,(height/2)-20);
+        ctx.lineTo(width,(height/2)+20);
+        ctx.lineTo(width - 20,height/2);
+        ctx.fill();
+    }
+
+    this.createAdditionalTriangles = () =>{
+        ctx.beginPath();
+        ctx.moveTo(0, 20);
+        ctx.lineTo(0,60);
+        ctx.lineTo(20,40);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(width,20);
+        ctx.lineTo(width,60);
+        ctx.lineTo(width - 20,40);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(0,height - 20);
+        ctx.lineTo(0, height - 60);
+        ctx.lineTo(20, height - 40);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(width,height - 20);
+        ctx.lineTo(width,height - 60);
+        ctx.lineTo(width - 20,height - 40);
+        ctx.fill();
+    }
+
     this.createLabels = () => {
-        controlBoardCtx.clearRect(0,0,600,100)
+        controlBoardCtx.clearRect(0,0,width,100)
         controlBoardCtx.font = "15px Consolas";
         controlBoardCtx.fillStyle = "white";
         controlBoardCtx.textAlign = "start";
         controlBoardCtx.fillText("CREDITS", 10, 15);
         controlBoardCtx.textAlign = "center";
-        controlBoardCtx.fillText("BET", 280, 15);
+        controlBoardCtx.fillText("BET", width/2, 15);
         controlBoardCtx.textAlign = "end";
-        controlBoardCtx.fillText("LAST WIN", 590, 15);
-    };
-
-    this.createLines = () => {
-        ctx.lineWidth = 5;
-        ctx.beginPath();
-        ctx.moveTo(200, 0);
-        ctx.lineTo(200, 400);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(400, 0);
-        ctx.lineTo(400, 400);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(0,180);
-        ctx.lineTo(0,220);
-        ctx.lineTo(20,200);
-
-        ctx.fill();
-        ctx.beginPath();
-        ctx.moveTo(600,180);
-        ctx.lineTo(600,220);
-        ctx.lineTo(580,200);
-        ctx.fill();
+        controlBoardCtx.fillText("LAST WIN", width-10, 15);
     };
 
     this.updateCredits = (credits) => {
-        creditBoardCtx.clearRect(0,0,600,70)
+        creditBoardCtx.clearRect(0,0,width,70)
         creditBoardCtx.font = "30px DigitalFont";
         creditBoardCtx.fillStyle = "white";
         creditBoardCtx.textAlign = "start";
         creditBoardCtx.fillText(credits.credit, 10, 50);
         creditBoardCtx.textAlign = "center";
-        creditBoardCtx.fillText(credits.bet, 280, 50);
+        creditBoardCtx.fillText(credits.bet, width/2, 50);
         creditBoardCtx.textAlign = "end";
-        creditBoardCtx.fillText(credits.lastWin, 590, 50);
+        creditBoardCtx.fillText(credits.lastWin, width-10, 50);
     };
 }

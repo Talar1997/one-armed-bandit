@@ -16,17 +16,20 @@
 }
 
 #screenContainer{
-    width: 700px;
     border-top: 50px solid #b96a03;
     border-left: 50px solid #e4a203;
     border-right: 50px solid #e4a203;
     border-bottom: 80px solid #f4d115;
 }
 
+.containerBigger{
+    border-bottom: 100px solid #f4d115 !important;
+}
+
 #canvasContainer{
     outline: 5px solid black;
     outline-offset: -5px;
-    -webkit-box-shadow: inset 0px 0px 17px 4px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 0px 0px 17px 4px rgba(0,0,0,0.75);
-    box-shadow: inset 0px 0px 17px 4px rgba(0,0,0,0.75);
+    -webkit-box-shadow: inset 0 0 17px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0 0 17px 4px rgba(0,0,0,0.75);
+    box-shadow: inset 0 0 17px 4px rgba(0,0,0,0.75);
 }

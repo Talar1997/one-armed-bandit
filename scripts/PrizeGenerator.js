@@ -20,11 +20,10 @@ function PrizeGenerator(){
         let result = null;
         probabilityArray.forEach(el => {
             let potentialPrize = this.assignPrize(el[0], el[1], rng, el[2]);
-            if(potentialPrize !== undefined) result = potentialPrize
+            if(potentialPrize !== undefined) result = potentialPrize;
         });
 
-        if (result === null) return [itemsArray.getRandomItem(), itemsArray.getRandomItem(), itemsArray.getRandomItem()];
-        else return [result, result, result]
+        return result;
     };
 
     this.assignPrize = (a,b,rng, winArray) => {
